@@ -104,10 +104,24 @@ body:
     validations:
       required: true
   - type: textarea
+    id: longer-term-potential
+    attributes:
+      label: Longer-term potential
+      description: Useful follow-on capabilities beyond the one-day slice; proposed, not approved scope.
+    validations:
+      required: true
+  - type: textarea
     id: risks
     attributes:
       label: Risks
       description: Technical, product, maintenance, and dependency risks or unknowns.
+    validations:
+      required: true
+  - type: textarea
+    id: likely-wayfinder-decisions
+    attributes:
+      label: Likely Wayfinder decisions
+      description: Questions about scope, UX, architecture, or evidence that could require a decision map; state why if none are known.
     validations:
       required: true
   - type: textarea

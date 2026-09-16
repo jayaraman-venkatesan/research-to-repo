@@ -11,10 +11,12 @@ This 2026-09-15 fixture rehearses the actual
 The [brief](../../briefs/2026-09-15-rehearsal.md) and this document are authorized
 test evidence. They are not live Idea records, checkpoints, research findings,
 approvals, or delivery receipts. All remote references and events below are
-fictional. No browsing, GitHub calls, repository/PR creation, skill installation,
-portfolio updates, automation changes, or external mutation were performed.
-Only these evidence documents and the local task report are written and the
-evidence is committed on the already isolated `feature/lean-foundation` branch.
+fictional. The scenarios execute no browsing, GitHub calls, repository/PR
+creation, skill installation, portfolio updates, automation changes, or external
+mutation. Official GitHub documentation checks used to maintain the tracker
+adapter are separate from these fictional inputs. The rehearsal writes evidence
+only; the final fix also updates the workflow documents it exercises, on the
+already isolated `feature/lean-foundation` branch.
 
 The skill's rehearsal override restricts every mode and specialist to proposed
 artifacts and transitions. Its ordinary persistence instructions therefore do
@@ -27,7 +29,9 @@ and domain conventions, heartbeat guide, skill, both templates, Idea form,
 portfolio schema, plus installed `research`, `brainstorming`, `domain-modeling`,
 `writing-plans`, and `verification-before-completion` instructions. Research
 delegation, source lookup, product implementation, and specialist file writes
-are simulated under the no-mutation instruction. No subagents are dispatched.
+are simulated under the no-mutation instruction. The final extension also checks
+the installed `wayfinder` instructions and the tracker's `Wayfinding operations`
+adapter. No subagents are dispatched.
 
 ## Fictional primary-source fixtures
 
@@ -68,7 +72,9 @@ before final brief persistence. Do not send these payloads to a service.
 | Usefulness | Brief section 1 Useful application | Brief section 2 Useful application | Brief section 3 Useful application |
 | Interactive experience | Brief section 1 Interactive experience | Brief section 2 Interactive experience | Brief section 3 Interactive experience |
 | One-day vertical slice | Brief section 1 One-day vertical slice | Brief section 2 One-day vertical slice | Brief section 3 One-day vertical slice |
+| Longer-term potential | Brief section 1 Longer-term potential | Brief section 2 Longer-term potential | Brief section 3 Longer-term potential |
 | Risks | Brief section 1 Risks | Brief section 2 Risks | Brief section 3 Risks |
+| Likely Wayfinder decisions | Brief section 1 Likely Wayfinder decisions | Brief section 2 Likely Wayfinder decisions | Brief section 3 Likely Wayfinder decisions |
 | License and reproducibility notes | FX-P01 fixture notes above | FX-L01 fixture notes above | FX-E01 fixture notes above |
 | Score rationale | 17/20, brief section 1 breakdown | 16/20, brief section 2 breakdown | 15/20, brief section 3 breakdown |
 | Next decision | Select, defer, or explicitly reject | Select, defer, or explicitly reject | Select, defer, or explicitly reject |
@@ -91,12 +97,37 @@ No live `.2026-09-15.pending.md` or final daily file is created in this test.
 | Snapshot input | Expected next action and state | Stop/completion observation |
 | --- | --- | --- |
 | D0: Three fixture candidates researched, no synchronization approval. | Present proposed remote `https://example.invalid/orchestration/research-to-repo`, non-default branch `fixture/daily-2026-09-15`, intended brief/research/checkpoint files, and issue changes. | Stop for this synchronization boundary approval. No push, issue mutation, or durability claim. |
-| D1: Separate fixture approval permits only those issue changes and artifact synchronization. Issue URLs have been confirmed in the fixture; local final brief exists but remote verification is absent. | Checkpoint lead Idea = FX-101; dated record = 2026-09-15; artifact commit/links = pending; issue sync = confirmed; Codex delivery = absent; daily state = `DailyDiscovery`. Push approved files and read back expected contents. | Local existence alone cannot set `BriefReady` or suppress a rerun. No default-branch write, new repository, or PR is authorized. |
-| D2: Fixture remote commit `FIXTURE-C1` contains the final brief and all cited research; immutable links and contents confirmed. | Record `BriefReady`, delivery pending, commit and artifact links in checkpoint and lead Idea record. Proposed immutable pattern: `https://example.invalid/orchestration/research-to-repo/blob/FIXTURE-C1/docs/briefs/2026-09-15.md`. | Next action: deliver the ranked brief and verified links to the Control Task. Still incomplete. |
+| D1: Separate fixture approval permits only those issue changes and artifact synchronization. Issue URLs have been confirmed in the fixture; local final brief exists but remote verification is absent. | Checkpoint lead Idea = FX-101; issue-body marker = `Daily run: 2026-09-15`; artifact commit/links = pending; issue sync = confirmed; Codex delivery = absent; daily state = `DailyDiscovery`. Push approved files and read back expected contents. | Local existence alone cannot set `BriefReady` or suppress a rerun. No default-branch write, new repository, or PR is authorized. |
+| D2: Fixture remote commit `FIXTURE-C1` contains the final brief and all cited research; immutable links and contents confirmed. | Record `BriefReady`, delivery pending, commit and artifact links in checkpoint and lead Idea record; synchronize and read back that checkpoint before posting. Proposed immutable pattern: `https://example.invalid/orchestration/research-to-repo/blob/FIXTURE-C1/docs/briefs/2026-09-15.md`. | Next action: deliver the ranked brief and verified links to the Control Task. Still incomplete. |
 | D3: Fictional Control Task `FIXTURE-T1` contains message `FIXTURE-M1` with all three candidates and verified links. | Save delivery evidence; synchronize `AwaitingSelection` and read it back in the lead Idea checkpoint record (`FIXTURE-C2` if stored as a repository artifact). | Complete only after remote state readback; then stop for selection. Actual rehearsal has no such delivery or remote evidence. |
 | D4: Same day rerun has final file, verified remote artifacts, confirmed message, and remotely recorded `AwaitingSelection`. | Stop quietly; reuse the dated record, links and message. | No second brief, repost, repeated appearance date, or catch-up brief. |
 | D5: Interrupted delivery has uncertain outcome. | Inspect task history: reuse confirmed `FIXTURE-M1`; post only if absence is confirmed; ambiguous history keeps delivery pending. | An uncertain post must not cause automatic duplicate delivery. |
 | D6: Delivery confirmed but final state synchronization failed. | Retry only pending checkpoint/Idea state write, with readback. | Keep run incomplete, preserve message evidence, and do not repost the brief. |
+
+## Missing-local-state and remote-checkpoint recovery
+
+These are authored snapshots, not reads from GitHub or task history. Every
+repository, branch, issue, commit, message, and action in R0–R5 is fictional.
+The branch is D0's `fixture/daily-2026-09-15` in an `example.invalid` repository,
+standing in for the approved live boundary without granting any live authority.
+The fixed current date is 2026-09-15 in `America/Detroit`. Both local paths
+`docs/briefs/2026-09-15.md` and `docs/briefs/.2026-09-15.pending.md` are absent
+at the start of each independent case; no files are actually restored.
+
+| Snapshot input | Required proposed recovery | Expected observation |
+| --- | --- | --- |
+| R0: Fresh checkout, stale local tracking ref. Fresh remote branch read finds `FIXTURE-C1` artifacts, remote checkpoint names FX-101, and its `Daily run: 2026-09-15` body agrees on `BriefReady` with delivery pending. | Read all three remote records before considering discovery; verify cited artifacts, inspect `FIXTURE-T1` history, and reconstruct the same dated checkpoint. | Resume D2 at delivery. No new research, brief, Idea issue, or appearance date is proposed. Local absence did not establish a new run. |
+| R1: R0 remote records; task-history fixture confirms there is no delivered brief. | Propose one delivery, then synchronize delivery evidence and `AwaitingSelection` and read them back remotely. | The heartbeat cannot stay quiet merely because GitHub already has the brief. Stop for selection only after all three completion proofs exist. |
+| R2: R0 remote records; task history contains `FIXTURE-M1`, but the remote checkpoint still says delivery pending. | Reuse the confirmed message, reconstruct its evidence, and propose only the pending checkpoint/Idea synchronization and read-back. | No repost; the incomplete final state is repaired before quiet completion. |
+| R3: Fresh remote checkpoint and Idea record agree on `AwaitingSelection`; artifacts and `FIXTURE-M1` delivery are verified. | Reconcile the absent local copy from the remote run and stop quietly. | All three proofs hold. No second brief, delivery, or catch-up run. |
+| R4: Remote checkpoint file is confirmed absent, but all-state Idea-body search finds FX-101's dated record and artifact links. | Read FX-101 and task history, reconstruct the checkpoint from confirmed evidence, and resume its specific pending operation. | Missing local and remote checkpoint files do not erase the Idea's existing daily run. |
+| R5: Remote branch/Idea lookup is unavailable, or their dated records conflict. | Retain the unresolved evidence and report the precise reconciliation blocker. Retry only a clearly transient failure once. | Do not declare a new run or quiet completion. A permission error or unavailable lookup is not proof of absence. |
+
+Negative control: only confirmed absence in both local and fresh remote checks
+(including the all-state dated Idea lookup) permits new discovery. If the
+remote branch itself is confirmed missing, branch setup remains a controller
+prerequisite before any synchronization. None of these cases creates the branch
+or executes a remote action.
 
 ## Selection and approval stops
 
@@ -119,6 +150,74 @@ its state, labels, approvals, and completed work. Selecting archived FX-099 stop
 for explicit revival. If scope becomes uncertain or multi-session, the required
 route is `Wayfinder`; missing `wayfinder` is a blocker, not permission to force
 the clear-route path. This run does not pretend to execute that specialist.
+
+## Uncertain route through Wayfinder
+
+This independent branch selects the fictional Trace Loom candidate instead of
+Window Queue Lab. All names, issue references, assignees, approvals, API results,
+and proposed remote actions in W0–W6 are fictional. Each row is a separate
+session snapshot, so charting and the later human decision remain distinct.
+The live `wayfinder` skill is not executed and no research agent is dispatched.
+
+The proposed map is [Find Trace Loom's local import scope](https://example.invalid/orchestration/research-to-repo/issues/FX-W201)
+(`wayfinder:map`), linked from the Trace Loom Idea in the fictional orchestration
+repository while Project Repository approval is still absent. Its body has:
+
+```markdown
+## Destination
+
+Make the route to a specification for a local trace inspector clear.
+
+## Notes
+
+Fictional rehearsal only. Use wayfinder, research, grilling, and domain-modeling.
+Resolve product choices with the human; no implementation is in this map.
+
+## Decisions so far
+
+None yet.
+
+## Not yet specified
+
+None currently; revisit after the child-ticket resolutions.
+
+## Out of scope
+
+Hosted sharing and application implementation.
+```
+
+The map's native children would be
+[Can trace import run offline?](https://example.invalid/orchestration/research-to-repo/issues/FX-W202)
+(`wayfinder:research`) and
+[Choose import size and error behavior](https://example.invalid/orchestration/research-to-repo/issues/FX-W203)
+(`wayfinder:grilling`). Each body contains its `Question`, not an implementation
+ticket or a guessed answer. Create the issues first; then propose native
+`sub_issues` links and a `dependencies/blocked_by` edge on **Choose import size
+and error behavior**, using **Can trace import run offline?**'s REST database
+ID. These symbolic FX references are not valid IDs for any API call.
+
+| Snapshot | Proposed state and operation | Frontier and gate observation |
+| --- | --- | --- |
+| W0: Fictional message `FIXTURE-WA1` selects Trace Loom only. Offline capability and product limits are unresolved across sessions. | `Selected` → `ScopeAssessment` → `Wayfinder`/`decisioning`; invoke `wayfinder` conceptually. `grilling` and `domain-modeling` present the destination and uncertainty above. | STOP for the human to settle the map's destination; selection grants no product or repository approval. |
+| W1: Separate fictional `FIXTURE-WA2` approves that destination. | Propose `MapCreated`, the two children, and native links described above. Read back the parent and blocker relations; enter `DecisionFrontier`. | Both children are open and unassigned. **Can trace import run offline?** is the only frontier member; **Choose import size and error behavior** is blocked. Charting stops here. |
+| W2: Research session reads that frontier. | Recheck parents, blockers, and assignments; claim **Can trace import run offline?** by assigning fictional `fixture-dev`, then route `AFKResearch` to `research`. | The claim removes that child from the available frontier; the other remains blocked. An empty available frontier does not close the map. |
+| W3: Supplied fictional [SDK note](https://example.invalid/sdk/fx-l01/offline) says local input works without network and malformed events produce a parse error. | `DecisionRecorded`: propose a factual resolution comment with the cited fixture note; close the research child as completed; append its named link and gist under `Decisions so far`, then read back. | Facts do not choose product behavior. The native blocker is now closed, so the unassigned **Choose import size and error behavior** becomes the frontier. |
+| W4: A new session claims **Choose import size and error behavior**. | `HumanGrilling` via `grilling` and `domain-modeling`; present a concrete proposal: local files up to 1 MiB, reject a malformed trace with a clear error, no partial import. Enter `AwaitingDecision`. | STOP. Keep the ticket open and claimed with the pending proposal; no resolution comment, closure, or approved-choice index entry yet. |
+| W5: Separate fictional human message `FIXTURE-WA3` approves exactly W4. | `DecisionRecorded`: propose the resolution comment linking the approval and its scope, close the grilling child as completed, append a named link and gist to the latest map body, and read back all changes. | Query children and blockers again: both children closed, no open or claimed child remains, and no in-scope uncertainty remains. The route is clear. |
+| W6: W5 evidence is confirmed within the fixture. | Close **Find Trace Loom's local import scope** as completed, record the next action on the Idea, exit Wayfinder to `FocusedResearch`/`researching`. | Next action: verify parser behavior and terms for the chosen slice with `research`, then follow `DomainModel` and `ArchitectureDecisions` toward `AwaitingSpecApproval`. No spec, ticket, repository, or implementation gate is skipped. |
+
+Proposed final `Decisions so far` index (each full answer stays on its child):
+
+- [Can trace import run offline?](https://example.invalid/orchestration/research-to-repo/issues/FX-W202): Fixture docs describe offline input and parse errors.
+- [Choose import size and error behavior](https://example.invalid/orchestration/research-to-repo/issues/FX-W203): Fictional human chose a 1 MiB local limit and whole-trace rejection on parse errors.
+
+Revision control: a fictional request to revise W4 returns to
+`DecisionFrontier` with the child still open; it cannot take W5's closure path.
+If the blocker read is unavailable, the frontier remains unknown. If the
+research reveals another precise prerequisite, create and wire that child
+before proceeding; unresolved `Not yet specified` content prevents map closure.
+Every claimed ticket retains a handoff on interruption, and completed evidence
+is reused when the next session resumes.
 
 ## Repository Approval Proposal
 
@@ -175,6 +274,14 @@ are remaining live-research risks.
 Simulated question: “Do you approve creating `fixture-owner/fictional-window-queue-lab`
 as a public repository with the MIT License, description, and initial structure
 above, based on the supplied fictional license fixtures?” STOP at G5.
+
+Alternative-value check: in a separate fixture, a compatibility ruling changes
+the proposal's License to `Apache-2.0` and the human proposes Visibility
+`Private`. The filled question must then read: “Do you approve creating
+`fixture-owner/fictional-window-queue-lab` as a private repository with the
+Apache-2.0 License, and the description and initial structure above?” STOP for
+that revised proposal. Neither public visibility nor MIT is silently retained;
+no real compatibility finding or approval is asserted by this test.
 
 ## Conditional release and portfolio boundary
 
@@ -274,16 +381,18 @@ An ordinary approval wait with no execution blocker instead retains its
 The rehearsal confirms the documented decisions can be represented without
 crossing an approval gate: one new and two dated resurfaced candidates, proposed
 idempotent issue records, artifact/delivery/state checkpoints, separate scope,
-spec, ticket, repository and PR stops, and bounded failure recovery. The actual
-next action is review of these evidence files; setup, publication, and heartbeat
-activation remain separate authorized tasks if requested later.
+spec, ticket, repository and PR stops, bounded failure recovery, recovery from
+missing local state, and a Wayfinder map with claims, native blocking, frontier
+changes, human decision, and return to focused research. The next action for
+this evidence is review; it supplies no real workflow approval.
 
-No skill ambiguity requiring a change was exposed. The opening rehearsal rule
-covers specialist mutations, daily steps 7–8 distinguish local files from remote
-durability and delivery, and recovery distinguishes pre-selection failure from
-selected-work handoff. The broad Backlog-changes template wording is constrained
-by the skill's explicit selected/paused-status preservation rule, which the brief
-states. The skill is unchanged.
+The final review exposed missing remote-first recovery and tracker operations.
+The revised skill and adapter now state those operations explicitly, and R0–R5
+and W0–W6 walk them without executing mutations. The heartbeat quiet rule
+requires all three completion proofs; D5–D6 and R1–R3 distinguish missing
+delivery from pending state synchronization. Candidate fixtures now include
+longer-term potential and likely Wayfinder decisions, and the alternate-value
+proposal checks that the approval question restates the actual proposal.
 
 This is a document contract walkthrough, not a live integration test. Actual
 source verification, specialist execution, GitHub persistence, task-message

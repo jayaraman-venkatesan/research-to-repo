@@ -18,7 +18,10 @@ Issues are the durable ledger for Ideas and system-level Wayfinder Maps. Each
 selected project gets its own application repository; its implementation
 tickets, code, tests, and delivery material live there.
 
-The expected local workspace is:
+On this host the repository root is
+`/Users/jayaramanvenkatesan/Documents/Personal-Project/research-to-repo`;
+`Personal-Project` is the workspace container, not a Git repository. The expected
+local workspace is:
 
 ```text
 Personal-Project/
@@ -99,25 +102,32 @@ repository approval permits readiness and implementation; release approval
 permits the pull request. A public repository, pull request, and shipped
 status are never automatic.
 
-GitHub synchronization is also a live gate. Remote workflow artifacts may be
-written only to the approved GitHub remote and non-default synchronization
-branch/checkpoint. Without that approval, the skill presents the concrete
-proposal and stops. A local artifact is not described as GitHub-persisted until
-the approved branch is pushed, read back, and the checkpoint records verified
-remote contents and delivery evidence.
+Standing synchronization approval covers `origin` at
+`https://github.com/jayaraman-venkatesan/research-to-repo.git` and non-default
+branch `automation/daily-briefs`. Pushes are limited to dated briefs, cited
+research notes, and checkpoints/handoffs, with related Idea-state updates in
+GitHub Issues. Application code never goes on this branch. Workflow rules,
+templates, portfolio changes, and other remote mutations need their own
+applicable approval. A local artifact is not GitHub-persisted until the approved
+branch is pushed and its contents are read back. See the
+[operational configuration](docs/operations/heartbeat.md) for pending setup and
+the approved heartbeat prompt.
 
 ## Recovery and daily operation
 
-The intended heartbeat schedule is 8:00 AM `America/Detroit`; its configuration
-is documented in [`docs/operations/heartbeat.md`](docs/operations/heartbeat.md)
-and must be separately approved before activation. Manual invocation of
-`$research-to-repo daily` is the fallback.
+The heartbeat is configured for 8:00 AM `America/Detroit`; its approved prompt
+update and synchronization-branch setup await controller read-back as documented
+in [`docs/operations/heartbeat.md`](docs/operations/heartbeat.md). Manual
+invocation of `$research-to-repo daily` is the fallback.
 
-Daily work is idempotent. A final dated brief is quiet only when its checkpoint
-also confirms verified remote artifacts, Codex delivery, and the remotely
-recorded `AwaitingSelection` state. If any proof is missing, the skill
-reconciles local, GitHub, and task records, then resumes the saved discovery or
-pending synchronization operation instead of creating a duplicate.
+Daily work is idempotent. Even in a fresh checkout with no local brief or
+checkpoint, read the remote synchronization branch, dated checkpoint, and Idea
+record before declaring a new run. Quiet behavior requires all three proofs:
+verified GitHub artifact persistence, Codex delivery, and remotely recorded
+`AwaitingSelection`. A dated or persisted brief alone is insufficient. If any
+proof is missing, reconcile local, GitHub, and task records, then resume saved
+discovery, delivery, or synchronization. Unknown remote state cannot justify a
+new run.
 
 On interruption or failure, retry one clearly transient failure. Otherwise,
 preserve artifacts and evidence in `docs/research/<idea-id>/handoff.md`, record
@@ -142,8 +152,8 @@ media, and an approved merged pull request. A specification-only result is
 
 ## Limitations and scope
 
-The foundation does not publish this repository, create repositories or pull
-requests automatically, schedule a heartbeat, run a custom workflow engine, or
+The workflow does not create repositories or pull requests automatically,
+reconfigure the heartbeat during a daily run, run a custom workflow engine, or
 use paid discovery/deployment services. It relies on Codex, GitHub, network
 access, and the required specialist skills being available. If repeated use
 reveals a failure that documents and checklists cannot prevent, add only the

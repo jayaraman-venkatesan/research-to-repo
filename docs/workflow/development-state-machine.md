@@ -98,3 +98,10 @@ stateDiagram-v2
 - `RepositoryReady`, `PullRequest`, and `Shipped` require distinct human approvals or verified events.
 - A specification-only result is `planned`; partial implementation is `building`; neither is `shipped`.
 - Reruns update the existing state record and dated brief rather than producing duplicates.
+- Before starting a new dated run, read the current remote synchronization
+  branch, checkpoint, and Idea record even when local files are absent; restore
+  and resume existing state. Unavailable or conflicting remote evidence cannot
+  establish that no run exists.
+- Quiet daily completion requires verified GitHub artifact persistence, Codex
+  brief delivery, and remotely recorded `AwaitingSelection`. A dated or
+  persisted brief alone leaves any missing delivery or synchronization pending.

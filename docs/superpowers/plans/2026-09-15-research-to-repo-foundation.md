@@ -10,6 +10,11 @@
 
 **Spec:** `docs/superpowers/specs/2026-09-15-research-to-repo-design.md`
 
+**Final operational rulings (2026-09-16):** The approved repository root,
+standing `automation/daily-briefs` synchronization scope, and replacement
+heartbeat prompt are recorded in `docs/operations/heartbeat.md`. These rulings
+refine daily recovery and supersede the initial brief-existence quiet condition.
+
 ## Global Constraints
 
 - Codex is the human control plane; GitHub is durable state.
@@ -125,7 +130,7 @@ git commit -m "docs: configure research-to-repo agent workflow"
 
 - [ ] **Step 1: Create the idea issue form**
 
-Require Idea ID, discovery date, appearance dates, category, status, pitch, users, primary sources, usefulness, interactive experience, one-day slice, risks, license/reproducibility notes, score rationale, and next decision. Default labels are `idea` and `idea:backlog`.
+Require Idea ID, discovery date, appearance dates, category, status, pitch, users, primary sources, usefulness, interactive experience, one-day slice, longer-term potential, risks, likely Wayfinder decisions, license/reproducibility notes, score rationale, and next decision. Default labels are `idea` and `idea:backlog`.
 
 - [ ] **Step 2: Create the daily brief template**
 
@@ -142,8 +147,8 @@ Require Idea ID, discovery date, appearance dates, category, status, pitch, user
 
 Each candidate includes: Idea ID, New/Resurfaced, Previous appearances,
 Pitch, Primary sources, Why it matters, Useful application, Interactive
-experience, Suggested stack, One-day vertical slice, Risks, Score, and
-Next decision.
+experience, Suggested stack, One-day vertical slice, Longer-term potential,
+Risks, Likely Wayfinder decisions, Score, and Next decision.
 
 ## Backlog changes
 ## Research notes
@@ -194,7 +199,7 @@ description: Orchestrate daily research-to-GitHub discovery, backlog tracking, h
 
 The skill must:
 
-1. Determine the current `America/Detroit` date and stop quietly if its persisted brief exists.
+1. Determine the current `America/Detroit` date. Check the remote synchronization branch, dated checkpoint, and Idea record even when local files are absent; reconcile or resume any existing run. Stop quietly only after verified GitHub artifact persistence, Codex delivery, and remotely recorded `AwaitingSelection` are all confirmed.
 2. Read the spec, state machine, portfolio, open idea issues, and recent briefs.
 3. Use broad discovery, then invoke `research` for primary-source verification and a cited note in `docs/research/<idea-id>/`.
 4. Produce the three approved candidate categories.
@@ -255,11 +260,11 @@ Expected: both runs exit `0`, one symlink exists, and it resolves to the reposit
 
 README covers purpose, architecture, workspace, setup, skill modes, approval gates, GitHub authentication, operation, recovery, project standards, and limitations. State that the system is document-driven with no custom app or CLI.
 
-Heartbeat docs include the schedule, missed-run behavior, manual fallback, quiet unchanged-state behavior, and this prompt:
-
-```text
-Invoke $research-to-repo in daily mode. Work in the research-to-repo project. Generate at most one brief for the current America/Detroit date. Stay quiet if today's persisted brief already exists. Preserve all unselected ideas. Notify me with the three ranked candidates, or when a meaningful failure or required human decision occurs. Stop for selection and every approval gate in the canonical state machine.
-```
+Heartbeat docs include the schedule, missed-run behavior, manual fallback,
+remote recovery from missing local files, and the exact approved replacement
+prompt in `docs/operations/heartbeat.md`. Its quiet condition requires verified
+GitHub artifact persistence, Codex delivery, and remotely recorded
+`AwaitingSelection`; brief existence alone is insufficient.
 
 - [ ] **Step 4: Verify and commit**
 

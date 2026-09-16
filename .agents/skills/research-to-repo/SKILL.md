@@ -16,12 +16,19 @@ workflow-state changes and stop at each simulated human gate.
 
 ## Establish context
 
-Resolve the Orchestration Repository from the task's saved project, even when
-this skill is installed elsewhere. All paths below are repository-relative.
+On this host, resolve the Orchestration Repository to
+`/Users/jayaramanvenkatesan/Documents/Personal-Project/research-to-repo`, even
+when the task's saved project is its parent `Personal-Project` directory or this
+skill is installed elsewhere. The parent is a workspace container. Verify the
+repository root and `origin` against
+`https://github.com/jayaraman-venkatesan/research-to-repo.git`; use an isolated
+linked worktree for writes. On another host, resolve and verify the saved
+project's equivalent checkout. All paths below are repository-relative.
 Read `AGENTS.md`, `CONTEXT.md`,
 `docs/superpowers/specs/2026-09-15-research-to-repo-design.md`, and the canonical
 `docs/workflow/development-state-machine.md` before acting. Consult
-`docs/agents/issue-tracker.md` for issue ownership and labels, and
+`docs/agents/issue-tracker.md` for issue ownership, labels, and its
+`Wayfinding operations` adapter before entering Wayfinder, and
 `docs/agents/domain.md` before vocabulary or ADR work.
 
 Record the current machine state separately from the substantive status
@@ -42,29 +49,47 @@ proceed. All repository edits use an isolated branch or worktree; use
 `using-git-worktrees` when isolation is needed. Never commit secrets, discard
 unfinished work, or create public repositories or PRs automatically.
 
-For repository artifacts, use only the GitHub remote and non-default branch
-covered by recorded human approval (including standing approval) for workflow
-synchronization. Commit the intended workflow files and push that approved
-branch; verify through GitHub reads that the remote commit contains the expected
-file contents, and record immutable artifact links and commit ID in the Idea
-issues. This does not authorize default-branch writes, PRs, or new repositories.
-If the synchronization boundary is not approved, present its concrete proposal
-in Codex and stop. Until remote contents are verified, retain local artifacts
-and pending operations without claiming GitHub durability or completion.
+The recorded standing synchronization approval is this repository's `origin`
+and non-default branch `automation/daily-briefs`. Its scope is dated briefs,
+cited research notes, checkpoints/handoffs, and Idea-state updates in GitHub
+Issues. Review the commits and files to be pushed against that scope; application
+code never goes on this branch. Changes to workflow rules, templates, or the
+portfolio index need their own applicable approval. Verify the approved branch
+exists before a write; a missing branch is an operational prerequisite for the
+controller to resolve, not permission to use the default branch.
+
+Commit only the intended workflow artifacts and push the approved branch.
+Verify through fresh GitHub reads that the remote commit contains their expected
+contents, then record immutable artifact links and commit ID in the Idea issues.
+Reconcile remote advancement before pushing; preserve work instead of force
+pushing. This approval does not authorize default-branch writes, PRs, or new
+repositories. A different synchronization boundary needs its own concrete
+proposal and approval in Codex. Until remote contents are verified, retain local
+artifacts and pending operations without claiming GitHub durability or completion.
 
 ## `daily`
 
 1. Determine today's date in `America/Detroit` (for example,
-   `TZ=America/Detroit date +%F`). Load `docs/briefs/YYYY-MM-DD.md` and any
-   checkpoint in `docs/briefs/.YYYY-MM-DD.pending.md`. The checkpoint names the
-   day's lead Idea issue, where its dated record is mirrored, and tracks artifact
-   commit/links, issue synchronization, Codex delivery evidence, and daily state.
-   Stop quietly only when the final brief exists and the checkpoint confirms
-   verified remote artifacts, delivered Codex brief, and remotely recorded
-   `AwaitingSelection`. For an existing run with missing proof, reconcile
-   local/GitHub/task records and resume its saved discovery or pending operations
-   in steps 6–8; existence alone never completes a run. With no existing run,
-   proceed to step 2. Generate only today's brief, never catch-up briefs.
+   `TZ=America/Detroit date +%F`). Before declaring a new run, always read the
+   current remote `automation/daily-briefs` commit, its
+   `docs/briefs/YYYY-MM-DD.md` and `docs/briefs/.YYYY-MM-DD.pending.md`, and the
+   day's Idea record, even when both local files are absent. A stale local
+   remote-tracking ref is insufficient. The checkpoint names the lead Idea;
+   its issue body mirrors the dated record under `Daily run: YYYY-MM-DD`, with
+   artifact commit/links, issue synchronization, Codex delivery evidence, daily
+   state, and pending operations. Search all-state Idea bodies for that dated
+   marker when the remote checkpoint is absent, then read matching records.
+   Compare these reads with local files and Control Task history. Restore or
+   reconstruct an existing checkpoint and resume its saved discovery or pending
+   operations in steps 6–8; do not rediscover merely because this checkout is
+   fresh. Unknown, unavailable, or conflicting remote evidence stops the run
+   pending reconciliation. A missing branch/file counts as absent only after
+   repository access and absence are confirmed. Proceed to step 2 only when
+   both local and remote checks establish there is no current-date run.
+   Stop quietly only after confirming all three proofs: verified GitHub
+   persistence of the brief and cited artifacts, Codex brief delivery, and
+   remotely recorded `AwaitingSelection`. A dated or persisted brief alone is
+   insufficient. Generate only today's brief, never catch-up briefs.
 2. Read `portfolio/projects.yaml`, open Idea issues, recent briefs, and their
    linked handoffs. Inspect archived history during duplicate checks; explicit
    rejection excludes an idea until the human explicitly revives it.
@@ -94,13 +119,17 @@ and pending operations without claiming GitHub durability or completion.
    or update Idea issues idempotently using `.github/ISSUE_TEMPLATE/idea.yml`
    and the tracker conventions; recheck identity immediately before creation.
    Preserve history and merge appearance dates without duplicates. Reconcile
-   uncertain remote outcomes by reading before retrying a mutation.
+   uncertain remote outcomes by reading before retrying a mutation. Mirror the
+   dated checkpoint in the lead Idea body under `Daily run: YYYY-MM-DD` so a
+   fresh checkout can find the run even before the brief is published.
 7. After all issue links and required fields are confirmed, persist
    `docs/briefs/YYYY-MM-DD.md` and synchronize it and every cited research
    artifact through the approved boundary above. Confirm their remote contents
    and immutable links before recording `BriefReady` with delivery pending in
-   the checkpoint and its lead Idea issue record. Local files alone remain
-   pending; a failed push or verification cannot advance this checkpoint.
+   the checkpoint and its lead Idea issue record. Synchronize and read back this
+   delivery-pending checkpoint before posting, making recovery available to a
+   fresh checkout. Local files alone remain pending; a failed push or
+   verification cannot advance this checkpoint.
 8. Post the concise ranked recommendation and verified links in the Control
    Task. Record task/message evidence of delivery, then synchronize and read
    back the checkpoint's `AwaitingSelection` state on GitHub before marking the
@@ -128,7 +157,7 @@ Follow these routes until the next human gate or handoff:
 
 | State / condition | Required route and exit |
 | --- | --- |
-| `ScopeAssessment`: large, uncertain, or multi-session | Invoke `wayfinder`; enter `Wayfinder`/`decisioning`. Require a durable map and decision frontier before work on uncertainty. |
+| `ScopeAssessment`: large, uncertain, or multi-session | Invoke `wayfinder`; enter `Wayfinder`/`decisioning`. Use the tracker adapter for a durable map, native child/dependency links, claims, frontier queries, and resolution records before work on uncertainty. |
 | Wayfinder decision frontier | Route a primary-source question (`AFKResearch`) to `research`; a product/domain decision (`HumanGrilling`) to `grilling`; a runnable question (`Prototype`) to `prototype`; a human-only prerequisite (`ManualTask`) to `wizard`. Research records facts in `DecisionRecorded`, not product choices. The other branches return to `AwaitingDecision` in Codex. |
 | `AwaitingDecision` / `DecisionRecorded` | Human approval records the decision; requested revision returns to `DecisionFrontier`. Continue the frontier while uncertainty remains. Exit Wayfinder only when the route is clear. |
 | Clear route / Wayfinder exit | Enter `FocusedResearch`/`researching` using `research`, then sharpen scope and UX with `brainstorming` (or `grilling` where needed). Use `domain-modeling` for `DomainModel` and `ArchitectureDecisions`, following the domain conventions. Surface consequential choices for human approval. |

@@ -19,7 +19,9 @@ candidates.
 - **Interactive experience:**
 - **Suggested stack:**
 - **One-day vertical slice:**
+- **Longer-term potential:**
 - **Risks:**
+- **Likely Wayfinder decisions:**
 - **Score:**
 - **Next decision:**
 
@@ -35,7 +37,9 @@ candidates.
 - **Interactive experience:**
 - **Suggested stack:**
 - **One-day vertical slice:**
+- **Longer-term potential:**
 - **Risks:**
+- **Likely Wayfinder decisions:**
 - **Score:**
 - **Next decision:**
 
@@ -51,7 +55,9 @@ candidates.
 - **Interactive experience:**
 - **Suggested stack:**
 - **One-day vertical slice:**
+- **Longer-term potential:**
 - **Risks:**
+- **Likely Wayfinder decisions:**
 - **Score:**
 - **Next decision:**
 

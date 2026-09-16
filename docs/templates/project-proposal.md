@@ -38,5 +38,9 @@ MIT (default; confirm compatibility before approval)
 
 ## Approval question
 
-Do you approve creating the proposed public repository with the MIT License,
-name, description, and initial structure above?
+Replace the placeholders with the actual proposed name, visibility, and license
+from this proposal, including any compatibility-driven alternative to MIT.
+
+Do you approve creating `<owner>/<proposed-name>` as a `<proposed-visibility>`
+repository with `<proposed-license>`, and the description and initial structure
+above?
