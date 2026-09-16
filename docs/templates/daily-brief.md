@@ -1,5 +1,8 @@
 # Daily Brief — YYYY-MM-DD
 
+Every brief must include at least one new candidate and at most two resurfaced
+candidates.
+
 ## Recommendation
 
 <Ranked recommendation and why it leads today>
@@ -53,5 +56,9 @@
 - **Next decision:**
 
 ## Backlog changes
+
+Preserve every unselected candidate as an open backlog Idea issue. Retain
+unfinished work and its durable handoff; do not discard either when updating
+the backlog.
 
 ## Research notes
