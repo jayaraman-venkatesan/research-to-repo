@@ -185,19 +185,19 @@ Daily runs are idempotent: there is one dated brief per day and stable IDs for i
 
 ## Verification Strategy
 
-The orchestration implementation must verify:
+The lean orchestration foundation is Markdown-driven rather than a custom application. Before activation, verify it through a controlled rehearsal that:
 
-- Skill routing and mandatory approval gates
-- Valid lifecycle transitions
-- Stable idea IDs and duplicate prevention
-- Backlog rotation constraints
-- Brief and portfolio schema validity
-- Citations and repository links
-- Markdown and Mermaid validity
-- A dry-run mode that performs no GitHub mutations
-- A controlled end-to-end simulation from discovery through release
+- Loads the intended specialist skills and stops at mandatory approval gates
+- Walks only transitions allowed by the canonical state machine
+- Creates stable idea IDs and checks existing issues before proposing new ones
+- Applies the balanced backlog rotation constraints
+- Produces a complete daily brief and portfolio entry from the documented templates
+- Preserves citations and repository links
+- Renders valid Markdown and Mermaid
+- Performs no GitHub mutation during the rehearsal
+- Reaches a simulated release decision without crossing a human gate
 
-Every application additionally verifies its own tests, lint, type checking, build, container startup, documentation, and demo evidence before release approval.
+If repeated operation exposes errors that documents and checklists cannot prevent, add deterministic tooling in a later ADR rather than pre-building a workflow engine. Every application still verifies its own tests, lint, type checking, build, container startup, documentation, and demo evidence before release approval.
 
 ## Initial Scope
 
@@ -205,17 +205,18 @@ The first implementation includes:
 
 - The orchestration repository and documented workflow
 - A thin orchestration skill
-- Idea and portfolio schemas
+- Idea, brief, and portfolio templates
 - GitHub issue conventions and labels
 - Daily brief generation and persistence
 - Codex heartbeat configuration
-- Dry-run and lifecycle validation
+- A no-mutation rehearsal of the complete workflow
 - Setup documentation
 
 The first implementation excludes:
 
 - A custom mobile application
 - A custom MCP control application
+- A custom TypeScript CLI or state engine
 - Automatic public repository creation
 - Automatic pull-request creation
 - Mandatory cloud hosting
