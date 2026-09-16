@@ -1,0 +1,133 @@
+name: Idea
+description: Record a durable research-to-repo opportunity.
+title: "[Idea]: "
+labels:
+  - idea
+  - idea:backlog
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use a stable Idea ID and link only verified primary sources. This issue
+        preserves an idea's research basis, lifecycle, and next human decision.
+  - type: input
+    id: idea-id
+    attributes:
+      label: Idea ID
+      description: Stable lowercase identifier derived from category, canonical source, and title.
+      placeholder: paper-example-source-short-title
+    validations:
+      required: true
+  - type: input
+    id: discovery-date
+    attributes:
+      label: Discovery date
+      description: Date this Idea was first discovered (YYYY-MM-DD).
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: appearance-dates
+    attributes:
+      label: Appearance dates
+      description: Dates this Idea appeared in Daily Briefs, including the current brief.
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Paper or algorithm application
+        - Open-source library or SDK application
+        - Existing project extension
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - backlog
+        - selected
+        - researching
+        - decisioning
+        - planned
+        - building
+        - blocked
+        - shipped
+        - archived
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: pitch
+    attributes:
+      label: Pitch
+      description: One-sentence description of the opportunity.
+    validations:
+      required: true
+  - type: textarea
+    id: users
+    attributes:
+      label: Users
+      description: Intended users and the problem they need solved.
+    validations:
+      required: true
+  - type: textarea
+    id: primary-sources
+    attributes:
+      label: Primary sources
+      description: Original paper, official documentation, source repository, release notes, or specification links.
+    validations:
+      required: true
+  - type: textarea
+    id: usefulness
+    attributes:
+      label: Usefulness
+      description: Why the application matters and its practical value.
+    validations:
+      required: true
+  - type: textarea
+    id: interactive-experience
+    attributes:
+      label: Interactive experience
+      description: How users will explore or operate the application.
+    validations:
+      required: true
+  - type: textarea
+    id: one-day-slice
+    attributes:
+      label: One-day vertical slice
+      description: Smallest useful end-to-end demonstration for the first day.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks
+      description: Technical, product, maintenance, and dependency risks or unknowns.
+    validations:
+      required: true
+  - type: textarea
+    id: license-reproducibility
+    attributes:
+      label: License and reproducibility notes
+      description: Upstream license compatibility, data/model access, and reproducibility constraints.
+    validations:
+      required: true
+  - type: textarea
+    id: score-rationale
+    attributes:
+      label: Score rationale
+      description: Recommendation score and the evidence behind it.
+    validations:
+      required: true
+  - type: textarea
+    id: next-decision
+    attributes:
+      label: Next decision
+      description: Exact human decision required to advance or defer this Idea.
+    validations:
+      required: true

@@ -1,0 +1,5 @@
+# Future entries contain: ideaId, name, repository, status, researchBasis,
+# readme, demo, and lastActivityOn. A shipped entry requires both readme and
+# demo links.
+version: 1
+projects: []
