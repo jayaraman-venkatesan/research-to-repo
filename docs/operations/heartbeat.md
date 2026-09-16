@@ -1,5 +1,17 @@
 # Daily research-to-repo heartbeat
 
+## Live configuration
+
+Configured after separate human approval and verified by app read-back on
+2026-09-16:
+
+- Name: `Daily research-to-repo brief`
+- Automation ID: `daily-research-to-repo-brief`
+- Status: `ACTIVE`
+- Schedule: daily at 8:00 AM in the host's `America/Detroit` timezone
+- Destination: the persistent Codex Control Task for research-to-repo
+- Prompt: the unchanged prompt below
+
 ## Intended schedule
 
 After a successful no-mutation rehearsal and a separate explicit human
