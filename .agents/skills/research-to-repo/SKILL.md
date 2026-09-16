@@ -42,12 +42,29 @@ proceed. All repository edits use an isolated branch or worktree; use
 `using-git-worktrees` when isolation is needed. Never commit secrets, discard
 unfinished work, or create public repositories or PRs automatically.
 
+For repository artifacts, use only the GitHub remote and non-default branch
+covered by recorded human approval (including standing approval) for workflow
+synchronization. Commit the intended workflow files and push that approved
+branch; verify through GitHub reads that the remote commit contains the expected
+file contents, and record immutable artifact links and commit ID in the Idea
+issues. This does not authorize default-branch writes, PRs, or new repositories.
+If the synchronization boundary is not approved, present its concrete proposal
+in Codex and stop. Until remote contents are verified, retain local artifacts
+and pending operations without claiming GitHub durability or completion.
+
 ## `daily`
 
 1. Determine today's date in `America/Detroit` (for example,
-   `TZ=America/Detroit date +%F`). If `docs/briefs/YYYY-MM-DD.md` exists, stop
-   quietly with no writes or duplicate notification. Generate only today's
-   brief, never catch-up briefs. Reuse any pending draft for that date.
+   `TZ=America/Detroit date +%F`). Load `docs/briefs/YYYY-MM-DD.md` and any
+   checkpoint in `docs/briefs/.YYYY-MM-DD.pending.md`. The checkpoint names the
+   day's lead Idea issue, where its dated record is mirrored, and tracks artifact
+   commit/links, issue synchronization, Codex delivery evidence, and daily state.
+   Stop quietly only when the final brief exists and the checkpoint confirms
+   verified remote artifacts, delivered Codex brief, and remotely recorded
+   `AwaitingSelection`. For an existing run with missing proof, reconcile
+   local/GitHub/task records and resume its saved discovery or pending operations
+   in steps 6–8; existence alone never completes a run. With no existing run,
+   proceed to step 2. Generate only today's brief, never catch-up briefs.
 2. Read `portfolio/projects.yaml`, open Idea issues, recent briefs, and their
    linked handoffs. Inspect archived history during duplicate checks; explicit
    rejection excludes an idea until the human explicitly revives it.
@@ -78,10 +95,20 @@ unfinished work, or create public repositories or PRs automatically.
    and the tracker conventions; recheck identity immediately before creation.
    Preserve history and merge appearance dates without duplicates. Reconcile
    uncertain remote outcomes by reading before retrying a mutation.
-7. After all issue links and required fields are confirmed, persist the final
-   `docs/briefs/YYYY-MM-DD.md`. This is `BriefReady`; post its concise ranked
-   recommendation and links in Codex, record `AwaitingSelection`, and stop for
-   the human's choice. Unselected new ideas remain open with `idea:backlog`.
+7. After all issue links and required fields are confirmed, persist
+   `docs/briefs/YYYY-MM-DD.md` and synchronize it and every cited research
+   artifact through the approved boundary above. Confirm their remote contents
+   and immutable links before recording `BriefReady` with delivery pending in
+   the checkpoint and its lead Idea issue record. Local files alone remain
+   pending; a failed push or verification cannot advance this checkpoint.
+8. Post the concise ranked recommendation and verified links in the Control
+   Task. Record task/message evidence of delivery, then synchronize and read
+   back the checkpoint's `AwaitingSelection` state on GitHub before marking the
+   daily run complete locally. An interrupted or uncertain post requires a task
+   history check: reuse confirmed delivery without reposting, post only when
+   absence is confirmed, and leave ambiguous outcomes pending for resolution.
+   Failed state synchronization retries only that pending write, not delivery.
+   Stop for the human's choice. Unselected new ideas remain open with `idea:backlog`.
    Existing selected or paused projects retain their substantive status.
    Explicit rejection records `Archived`/`archived` with `idea:archived`;
    ordinary non-selection records `Backlog`, never rejection. Backlog and paused
@@ -90,10 +117,12 @@ unfinished work, or create public repositories or PRs automatically.
 ## `select <idea-id>` and lifecycle routing
 
 Resolve exactly one durable Idea. Unknown or ambiguous IDs need clarification;
-an archived Idea requires explicit revival. Record the human's selection and
-`Selected`/`selected`, replace `idea:backlog` with `idea:selected`, then enter
-`ScopeAssessment`. Repeated selection of active work resumes its recorded
-position; it does not reset approvals or completed work.
+an archived Idea requires explicit revival. Before any mutation, check whether
+the Idea already has active work: route repeated selection to `continue` and
+retain its substantive status, machine state, labels, approvals, and completed
+work. Only a newly selected Idea records the human's selection and
+`Selected`/`selected`, replaces `idea:backlog` with `idea:selected`, and enters
+`ScopeAssessment`.
 
 Follow these routes until the next human gate or handoff:
 
