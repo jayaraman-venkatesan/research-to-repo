@@ -10,8 +10,8 @@ Configured after separate human approval and verified by app read-back on
 - Status: `ACTIVE`
 - Schedule: daily at 8:00 AM in the host's `America/Detroit` timezone
 - Destination: the persistent Codex Control Task for research-to-repo
-- Prompt: the initial prompt is superseded by the approved replacement below;
-  updating the live automation and reading it back are pending controller steps.
+- Prompt: the approved replacement below was applied to the existing automation
+  and verified by app read-back on 2026-09-16.
 
 ## Repository and synchronization boundary
 
@@ -23,13 +23,14 @@ personal skill currently links to a worktree. Verify `origin` is
 `https://github.com/jayaraman-venkatesan/research-to-repo.git` before operating.
 
 The human approved the standing non-default synchronization branch
-`automation/daily-briefs` on 2026-09-16. Branch creation and remote read-back are
-pending controller steps. Subsequent pushes are limited to dated briefs, cited
-research notes, and checkpoints/handoffs; related Idea-state updates belong in
-GitHub Issues. Application code never goes on this branch. Workflow rules,
-templates, portfolio changes, other branches, PRs, and repositories require
-their own applicable approval. The skill checks the intended commits and files
-against this scope and verifies remote contents after each synchronization.
+`automation/daily-briefs` on 2026-09-16. It was created and read back at commit
+`87ae57047d3c9e35939600575878ccf1305fd017` on that date. Subsequent pushes are
+limited to dated briefs, cited research notes, and checkpoints/handoffs; related
+Idea-state updates belong in GitHub Issues. Application code never goes on this
+branch. Workflow rules, templates, portfolio changes, other branches, PRs, and
+repositories require their own applicable approval. The skill checks the
+intended commits and files against this scope and verifies remote contents after
+each synchronization.
 
 ## Schedule and activation policy
 
@@ -41,12 +42,12 @@ of the skill, publication of the orchestration repository, and heartbeat
 activation are distinct actions and approvals. This document does not schedule
 or activate anything.
 
-## Approved replacement prompt
+## Live approved prompt
 
-The human approved this update on 2026-09-16. Apply it to the existing automation
-ID above, preserving its schedule, target, active status, and notification
-settings. Verify the saved prompt by app read-back before recording the update
-as live. This document alone does not update the automation.
+The human approved this update on 2026-09-16. It was applied to the existing
+automation ID above while preserving its schedule, target, active status, and
+notification settings, then verified by app read-back. This tracked copy is the
+canonical prompt for future configuration checks.
 
 Use this prompt unchanged:
 

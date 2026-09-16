@@ -110,15 +110,15 @@ GitHub Issues. Application code never goes on this branch. Workflow rules,
 templates, portfolio changes, and other remote mutations need their own
 applicable approval. A local artifact is not GitHub-persisted until the approved
 branch is pushed and its contents are read back. See the
-[operational configuration](docs/operations/heartbeat.md) for pending setup and
-the approved heartbeat prompt.
+[operational configuration](docs/operations/heartbeat.md) for the verified setup
+and live approved heartbeat prompt.
 
 ## Recovery and daily operation
 
 The heartbeat is configured for 8:00 AM `America/Detroit`; its approved prompt
-update and synchronization-branch setup await controller read-back as documented
-in [`docs/operations/heartbeat.md`](docs/operations/heartbeat.md). Manual
-invocation of `$research-to-repo daily` is the fallback.
+and the synchronization branch were applied and read back on 2026-09-16 as
+documented in [`docs/operations/heartbeat.md`](docs/operations/heartbeat.md).
+Manual invocation of `$research-to-repo daily` is the fallback.
 
 Daily work is idempotent. Even in a fresh checkout with no local brief or
 checkpoint, read the remote synchronization branch, dated checkpoint, and Idea
